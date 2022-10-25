@@ -1,0 +1,230 @@
+// Reset CSS
+@import url("https://cdn.jsdelivr.net/gh/jgthms/minireset.css@master/minireset.min.css");
+
+a {
+	text-decoration: none;
+}
+
+// Fonts and colors
+@font-face {
+	font-family: "Libre Franklin";
+	src: url("../fonts/Libre_Franklin/LibreFranklin-VariableFont_wght.ttf");
+	font-weight: 300 700;
+}
+
+$blue: hsl(223, 87%, 63%);
+$pale-blue: hsl(223, 100%, 88%);
+$light-red: hsl(354, 100%, 66%);
+$gray: hsl(0, 0%, 59%);
+$very-dark-blue: hsl(209, 33%, 12%);
+
+.bold {font-weight: 700;}
+
+html, body, main {
+	height: 100%;
+	font-size: 20px;
+	font-family: "Libre Franklin", cursive, Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+	font-weight: 300;
+}
+
+$breakpoint-down: 700px;
+$breakpoint-up: 701px;
+
+// Vertical and horizontal alignment
+.parent-container {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	display: table;
+}
+
+.child-container {
+	display: table-cell;
+	// vertical-align: middle;
+	text-align: center;
+}
+
+// CSS
+main {
+	margin: 5px 10px;
+	position: relative;
+}
+
+.logo {
+	margin: 2.5em 1em 2em 1em;
+}
+
+.main-text {
+	&__title {
+		color: $gray;
+		font-size: 32px;
+		font-weight: 300;
+	}
+	
+	&__description {
+		display: inline-block;
+		font-size: 14px;
+		margin: 20px 5px 35px 5px;
+	}
+
+	span {
+		color: $very-dark-blue;
+	}
+}
+
+.form {
+	margin-bottom: 50px;
+
+	input {
+		display: inline-block;
+		border-radius: 25px;
+		border-style: solid;
+		padding: 16px 28px;
+
+		&:focus {
+			outline-color: $gray;
+		}
+	}
+
+	&__input-container {
+		position: relative;
+	}
+
+	&__entry {
+		border-color: $pale-blue;
+		
+		&::placeholder {
+			color: $pale-blue;
+			font-size: 16px;
+		}
+	}
+	
+	&__submit {
+		font-weight: 600;
+		background-color: $blue;
+		border-color: $blue;
+		color: #FFF;
+		font-size: 16px;
+
+		&:hover {
+			opacity: (0.8);
+			cursor:pointer;
+		}
+	}
+
+	@media screen and (max-width: $breakpoint-down) {
+		
+		input {
+			width: 80%;
+
+			+ .form__error {
+				position: absolute;
+				visibility: hidden;
+				top: 56px;
+				right: 50%;
+				transform: translate(50%, 0%);
+				color: $light-red;
+				font-size: 12px;
+				white-space: nowrap;
+			}
+	
+			&:not(:focus):invalid {
+			margin-bottom: 24px;
+			
+			+ .form__error {
+					visibility: visible;
+				}
+			}
+		}
+		
+		&__entry {
+			margin-bottom: 10px;
+			border-color: $pale-blue;
+		}
+	}
+
+	@media screen and (min-width: $breakpoint-up) {
+		display: flex;
+		justify-content: center;
+
+		input + .form__error {
+			position: absolute;
+			visibility: hidden;
+			top: 60px;
+			left: 32px;
+			color: $light-red;
+			font-size: 12px;
+			white-space: nowrap;
+		}
+
+		input:not(:focus):invalid {
+		+ .form__error {
+				visibility: visible;
+			}
+		}
+
+		&__entry {
+			margin-right: 10px;
+			width: 420px;
+		}
+
+		&__submit {
+			width: 200px;
+		}
+	}
+}
+
+.main-img {
+	max-height: 40vh;
+	max-width: 90%;
+}
+
+.footer-space {
+	margin: auto;
+	height: 135px;
+	width: 250px;
+}
+
+footer {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
+
+.social-links {
+	display: flex;
+	justify-content: center;
+
+	&__link {
+		margin: 5px;
+		align-items: baseline;
+		border: 1px solid $pale-blue;
+		width: 30px;
+		height: 30px;
+		border-radius: 100%;
+		display: table;
+
+		&:hover {
+			background-color: $blue;
+
+			a {
+				color: #FFF;
+			}
+		}
+	}
+	
+	a {
+		color: $blue;
+		font-size: 14px;
+		display: table-cell;
+		vertical-align: middle;
+	}
+}
+
+.copyright {
+	display: inline-block;
+	color: $gray;
+	font-size: 14px;
+	margin: 25px 5px 40px 5px;
+}
